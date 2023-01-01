@@ -1,5 +1,5 @@
 import { AnyAction, Reducer } from "@reduxjs/toolkit"
-import { Player } from "src/core-logic/usecase/player"
+import { Player } from "src/core-logic/usecases/player"
 
 type State = null | Player[]
 const initialState: State = null
