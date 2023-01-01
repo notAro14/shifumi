@@ -13,7 +13,7 @@ interface Dependencies {
   playerGateway: PlayerGateway
 }
 
-export const createStore = (dependencies: Dependencies) =>
+export const createStore = (dependencies: Partial<Dependencies>) =>
   configureStore({
     reducer: {
       retrievePlayers,
