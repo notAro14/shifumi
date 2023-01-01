@@ -1,9 +1,11 @@
 import { AppThunk } from "src/store"
+import { ACTIONS } from "src/core-logic/events"
 
-export const retrievePlayers = (): AppThunk => async (dispatch) => {
-  const players = await Promise.resolve([{ id: "123abc", name: "Jane Doe" }])
-  dispatch({
-    type: "PLAYERS_RETRIEVED",
-    payload: players,
-  })
-}
+export const retrievePlayers =
+  (): AppThunk => async (dispatch, _getState, dependencies) => {
+    const players = await dependencies.playerGateway.retrievePlayers()
+    dispatch({
+      type: ACTIONS["retrievePlayers/fullfilled"],
+      payload: players,
+    })
+  }

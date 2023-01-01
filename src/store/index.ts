@@ -1,22 +1,38 @@
-import { configureStore, ThunkAction, AnyAction } from "@reduxjs/toolkit"
+import {
+  configureStore,
+  ThunkAction,
+  AnyAction,
+  ThunkDispatch,
+  Action,
+} from "@reduxjs/toolkit"
 import type { AppState } from "./appState"
 import { retrievePlayers } from "src/core-logic/reducers/retrievePlayers.reducer"
+import { PlayerGateway } from "src/core-logic/gateways/playerGateway"
 
-export const createStore = () =>
-  configureStore<AppState>({
+interface Dependencies {
+  playerGateway: PlayerGateway
+}
+
+export const createStore = (dependencies: Dependencies) =>
+  configureStore({
     reducer: {
       retrievePlayers,
     },
-    devTools: process.env.NODE_ENV === "development",
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        thunk: {
+          extraArgument: dependencies,
+        },
+      }),
+    devTools: true,
   })
-export const store = createStore()
 
-export type Store = typeof store
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
+export type AppDispatch = ThunkDispatch<AppState, Dependencies, Action>
+export type Store = ReturnType<typeof createStore>
+export type RootState = AppState
 export type AppThunk<ReturnType = Promise<void>> = ThunkAction<
   ReturnType,
   RootState,
-  unknown,
+  Dependencies,
   AnyAction
 >
