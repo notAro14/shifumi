@@ -1,14 +1,9 @@
 {
-  "name": "next-ts-starter",
-  "description": "Next Typescript Starter Code",
+  "name": "shifumi",
+  "description": "Shifumi Hexagonal",
   "private": true,
   "license": "MIT",
   "author": "Aro Andriamaro <ni.aro.aina@gmail.com>",
-  "keywords": [
-    "next js template",
-    "react template",
-    "react typescript"
-  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
