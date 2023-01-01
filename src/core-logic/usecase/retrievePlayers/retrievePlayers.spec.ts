@@ -1,10 +1,9 @@
-import { createStore, Store } from "src/store"
-import { AppState } from "src/store/appState"
+import { createStore, Store, RootState } from "src/store"
 import { retrievePlayers } from "./retrievePlayers"
 
 describe("retrieve players", () => {
   let store: Store
-  let initialState: AppState
+  let initialState: RootState
 
   beforeEach(() => {
     store = createStore()
