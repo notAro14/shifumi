@@ -6,10 +6,9 @@ import { configureAppStore } from "src/core/store/configureAppStore"
 import Layout from "./layout"
 import "src/styles/reset.scss"
 import "src/styles/open-props.scss"
-import { InMemoryShifumiGateway } from "src/adapters/secondary/gateways/inMemoryShifumiGateway"
+import { InMemoryRandomShifumiGateway } from "src/adapters/secondary/gateways/inMemoryRandomShifumiGateway"
 
-const shifumiGateway = new InMemoryShifumiGateway()
-shifumiGateway.shape = "Rock"
+const shifumiGateway = new InMemoryRandomShifumiGateway()
 const store = configureAppStore({ shifumiGateway })
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
