@@ -16,7 +16,7 @@ interface AppThunkExtraArg {
   dependencies: Partial<Dependencies>
 }
 
-type AppDispatch = ThunkDispatch<AppState, AppThunkExtraArg, Action>
+export type AppDispatch = ThunkDispatch<AppState, AppThunkExtraArg, Action>
 
 export type AppStore = Store<AppState> & {
   dispatch: AppDispatch
