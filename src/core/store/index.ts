@@ -1,8 +1,6 @@
 import { configureStore as _configureStore } from "@reduxjs/toolkit"
-import {
-  playShapeReducer as playShape,
-  PlayShapeState,
-} from "src/core/usecases/playShape/playShape.reducer"
+import { playShape } from "src/core/usecases/playShape/reducer"
+import type { AppState } from "./appState"
 
 export const configureStore = () => {
   return _configureStore<AppState>({
@@ -10,8 +8,4 @@ export const configureStore = () => {
       playShape,
     },
   })
-}
-
-export interface AppState {
-  playShape: PlayShapeState
 }
