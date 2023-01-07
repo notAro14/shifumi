@@ -1,3 +1,7 @@
 .layout {
   font-family: var(--font-sans);
+  height: 100%;
+  display: grid;
+  place-items: center;
+  padding: var(--size-fluid-2);
 }
