@@ -1,40 +1,43 @@
 import { configureAppStore } from "src/core/store/configureAppStore"
-import type { AppState } from "src/core/store"
+import type { AppState, AppStore } from "src/core/store"
+import type { Shape } from "src/core/models/shape"
 import { InMemoryShifumiGateway } from "src/adapters/secondary/gateways/inMemoryShifumiGateway"
 import { playShape } from "./playShape"
-import { Shape } from "src/core/models/shape"
 
-describe("play shape", () => {
-  test("initially both player and computer don't play shape", () => {
-    const shifumiGateway = new InMemoryShifumiGateway()
-    const store = configureAppStore({ shifumiGateway })
-    const state = store.getState()
-    expect(state).toEqual<AppState>({
+describe("Player plays a shape", () => {
+  let store: AppStore
+  let initialState: AppState
+  let shifumiGateway: InMemoryShifumiGateway
+
+  beforeEach(() => {
+    shifumiGateway = new InMemoryShifumiGateway()
+    store = configureAppStore({ shifumiGateway })
+    initialState = store.getState()
+  })
+
+  test("initially both player and computer don't form shapes", () => {
+    expect(initialState).toEqual<AppState>({
+      ...initialState,
       playShape: {
         playerShape: null,
         computerShape: null,
       },
     })
   })
-  describe("player forms a shape", () => {
-    test("player plays ROCK and computer plays SCISSORS", async () => {
-      const shifumiGateway = new InMemoryShifumiGateway()
-      const computerShape: Shape = "Scissors"
-      shifumiGateway.shape = computerShape
 
-      const store = configureAppStore({ shifumiGateway })
-      const initalState = store.getState()
+  test("player plays ROCK and computer plays SCISSORS", async () => {
+    const computerShape: Shape = "Scissors"
+    shifumiGateway.shape = computerShape
 
-      const playerShape: Shape = "Rock"
-      await store.dispatch(playShape(playerShape))
+    const playerShape: Shape = "Rock"
+    await store.dispatch(playShape(playerShape))
 
-      expect(store.getState()).toEqual<AppState>({
-        ...initalState,
-        playShape: {
-          playerShape,
-          computerShape,
-        },
-      })
+    expect(store.getState()).toEqual<AppState>({
+      ...initialState,
+      playShape: {
+        playerShape,
+        computerShape,
+      },
     })
   })
 })
