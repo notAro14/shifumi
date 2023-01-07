@@ -115,3 +115,85 @@ describe("count score for first round", () => {
     }
   )
 })
+
+describe("count score for 2 consecutive rounds", () => {
+  let store: AppStore
+  let initialState: AppState
+  let shifumiGateway: InMemoryShifumiGateway
+
+  beforeEach(() => {
+    shifumiGateway = new InMemoryShifumiGateway()
+    store = configureAppStore({ shifumiGateway })
+    initialState = store.getState()
+  })
+
+  test("Player wins 2 consecutive rounds", async () => {
+    shifumiGateway.shape = "Scissors"
+    await store.dispatch(playShape("Rock"))
+    shifumiGateway.shape = "Paper"
+    await store.dispatch(playShape("Scissors"))
+    expect(store.getState()).toEqual<AppState>({
+      ...initialState,
+      playShape: {
+        playerShape: "Scissors",
+        computerShape: "Paper",
+      },
+      countScore: {
+        player: 6,
+        computer: 0,
+      },
+    })
+  })
+
+  test("Player loses 2 consecutive rounds", async () => {
+    shifumiGateway.shape = "Scissors"
+    await store.dispatch(playShape("Paper"))
+    shifumiGateway.shape = "Paper"
+    await store.dispatch(playShape("Rock"))
+    expect(store.getState()).toEqual<AppState>({
+      ...initialState,
+      playShape: {
+        playerShape: "Rock",
+        computerShape: "Paper",
+      },
+      countScore: {
+        player: 0,
+        computer: 6,
+      },
+    })
+  })
+  test("Player gets 2 consecutive draws", async () => {
+    shifumiGateway.shape = "Scissors"
+    await store.dispatch(playShape("Scissors"))
+    shifumiGateway.shape = "Paper"
+    await store.dispatch(playShape("Paper"))
+    expect(store.getState()).toEqual<AppState>({
+      ...initialState,
+      playShape: {
+        playerShape: "Paper",
+        computerShape: "Paper",
+      },
+      countScore: {
+        player: 2,
+        computer: 2,
+      },
+    })
+  })
+  test("Player loses then wins", async () => {
+    shifumiGateway.shape = "Paper"
+    await store.dispatch(playShape("Rock"))
+    shifumiGateway.shape = "Scissors"
+    await store.dispatch(playShape("Rock"))
+    expect(store.getState()).toEqual<AppState>({
+      ...initialState,
+      playShape: {
+        playerShape: "Rock",
+        computerShape: "Scissors",
+      },
+      countScore: {
+        player: 3,
+        computer: 3,
+      },
+    })
+  })
+})

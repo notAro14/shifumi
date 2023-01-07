@@ -19,18 +19,16 @@ export const countScore = createReducer(initial, (builder) => {
     const roundStatus = shifumiMachineReducer({ playerShape, computerShape })
     switch (roundStatus) {
       case "DRAW": {
-        state.player = 1
-        state.computer = 1
+        state.player += 1
+        state.computer += 1
         break
       }
       case "WIN": {
-        state.player = 3
-        state.computer = 0
+        state.player += 3
         break
       }
       case "LOSE": {
-        state.player = 0
-        state.computer = 3
+        state.computer += 3
         break
       }
     }
