@@ -1,9 +1,11 @@
 import { ThunkDispatch, Action, Store } from "@reduxjs/toolkit"
 import type { ShifumiGateway } from "src/core/gateways/shifumiGateway"
 import type { PlayShapeState } from "src/core/usecases/playShape/reducer"
+import type { CountScoreState } from "src/core/usecases/countScore/reducer"
 
 export interface AppState {
   playShape: PlayShapeState
+  countScore: CountScoreState
 }
 
 export interface Dependencies {

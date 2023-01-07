@@ -32,12 +32,9 @@ describe("Player plays a shape", () => {
     const playerShape: Shape = "Rock"
     await store.dispatch(playShape(playerShape))
 
-    expect(store.getState()).toEqual<AppState>({
-      ...initialState,
-      playShape: {
-        playerShape,
-        computerShape,
-      },
+    expect(store.getState().playShape).toEqual<AppState["playShape"]>({
+      playerShape,
+      computerShape,
     })
   })
 })
