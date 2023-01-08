@@ -8,8 +8,8 @@ export default function History() {
   if (gameHistory.length === 0) return <p role="alert">No round played yet</p>
   return (
     <ul className={styles.history}>
-      {gameHistory.map((h) => (
-        <li key={h}>{h}</li>
+      {gameHistory.map((h, idx) => (
+        <li key={h + idx}>{h}</li>
       ))}
     </ul>
   )
