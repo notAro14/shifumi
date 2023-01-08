@@ -20,6 +20,7 @@ specifiers:
   lint-staged: ^13.1.0
   msw: ^0.49.2
   next: ^13.1.1
+  open-props: ^1.5.3
   prettier: ^2.8.1
   react: 18.2.0
   react-dom: 18.2.0
@@ -33,6 +34,7 @@ dependencies:
   '@reduxjs/toolkit': 1.9.1_k4ae6lp43ej6mezo3ztvx6pykq
   axios: 1.2.2
   next: 13.1.1_3duxcpitbtplz62feflag7fwby
+  open-props: 1.5.3
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-error-boundary: 3.1.4_react@18.2.0
@@ -4318,6 +4320,10 @@ packages:
     dependencies:
       mimic-fn: 4.0.0
     dev: true
+
+  /open-props/1.5.3:
+    resolution: {integrity: sha512-NzORO2a4Rf/MEo1DBTKxEzJ6ZNx9JswnvwjSKK9QOntg28AoxXt2LdpwfJ1dEQE4mkTdyaWkzwbtPg1yKpKFgw==}
+    dev: false
 
   /open/8.4.0:
     resolution: {integrity: sha512-XgFPPM+B28FtCCgSb9I+s9szOC1vZRSwgWsRUA5ylIxRTgKozqjOCrVOqGsYABPYK5qnfqClxZTFBa8PKt2v6Q==}
