@@ -4,8 +4,8 @@ import type { AppPropsWithLayout } from "src/types/next"
 import { configureAppStore } from "src/core/store/configureAppStore"
 
 import Layout from "./layout"
-import "src/styles/reset.scss"
-import "src/styles/open-props.scss"
+import "src/styles/reset.css"
+import "src/styles/open-props.css"
 import { InMemoryRandomShifumiGateway } from "src/adapters/secondary/gateways/inMemoryRandomShifumiGateway"
 
 const shifumiGateway = new InMemoryRandomShifumiGateway()
