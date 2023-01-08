@@ -1,6 +1,7 @@
 import { createReducer } from "@reduxjs/toolkit"
 import type { Shape } from "src/core/models/shape"
 import { playShape } from "src/core/usecases/playShape"
+import { resetGame } from "src/core/usecases/resetGame/actions"
 
 export type SaveRoundToHistoryState = {
   playerShape: Shape
@@ -16,4 +17,5 @@ export const saveRoundToHistory = createReducer(initial, (builder) => {
 
     state.push({ playerShape, computerShape })
   })
+  builder.addCase(resetGame, () => initial)
 })

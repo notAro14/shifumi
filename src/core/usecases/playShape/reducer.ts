@@ -1,6 +1,7 @@
 import { createReducer } from "@reduxjs/toolkit"
 import type { Shape } from "src/core/models/shape"
 import { playShape as _playShape } from "src/core/usecases/playShape"
+import { resetGame } from "src/core/usecases/resetGame/actions"
 
 export interface PlayShapeState {
   playerShape: Shape | null
@@ -16,4 +17,5 @@ export const playShape = createReducer(initial, (builder) => {
     state.computerShape = action.payload.computerShape
     state.playerShape = action.payload.playerShape
   })
+  builder.addCase(resetGame, () => initial)
 })

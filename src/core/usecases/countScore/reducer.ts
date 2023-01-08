@@ -1,6 +1,7 @@
 import { createReducer } from "@reduxjs/toolkit"
 import { playShape } from "src/core/usecases/playShape"
 import type { Shape } from "src/core/models/shape"
+import { resetGame } from "src/core/usecases/resetGame/actions"
 
 export interface CountScoreState {
   player: number
@@ -33,6 +34,7 @@ export const countScore = createReducer(initial, (builder) => {
       }
     }
   })
+  builder.addCase(resetGame, () => initial)
 })
 
 const shifumiMachineReducer = (round: {
