@@ -27,13 +27,11 @@ describe("initial score", () => {
 
 describe("count score for first round", () => {
   let store: AppStore
-  let initialState: AppState
   let shifumiGateway: InMemoryShifumiGateway
 
   beforeEach(() => {
     shifumiGateway = new InMemoryShifumiGateway()
     store = configureAppStore({ shifumiGateway })
-    initialState = store.getState()
   })
 
   const table: {
@@ -104,27 +102,18 @@ describe("count score for first round", () => {
       shifumiGateway.shape = computerShape
       await store.dispatch(playShape(playerShape))
 
-      expect(store.getState()).toEqual<AppState>({
-        ...initialState,
-        playShape: {
-          playerShape,
-          computerShape,
-        },
-        countScore: score,
-      })
+      expect(store.getState().countScore).toEqual<AppState["countScore"]>(score)
     }
   )
 })
 
 describe("count score for 2 consecutive rounds", () => {
   let store: AppStore
-  let initialState: AppState
   let shifumiGateway: InMemoryShifumiGateway
 
   beforeEach(() => {
     shifumiGateway = new InMemoryShifumiGateway()
     store = configureAppStore({ shifumiGateway })
-    initialState = store.getState()
   })
 
   test("Player wins 2 consecutive rounds", async () => {
@@ -132,16 +121,9 @@ describe("count score for 2 consecutive rounds", () => {
     await store.dispatch(playShape("Rock"))
     shifumiGateway.shape = "Paper"
     await store.dispatch(playShape("Scissors"))
-    expect(store.getState()).toEqual<AppState>({
-      ...initialState,
-      playShape: {
-        playerShape: "Scissors",
-        computerShape: "Paper",
-      },
-      countScore: {
-        player: 6,
-        computer: 0,
-      },
+    expect(store.getState().countScore).toEqual<AppState["countScore"]>({
+      player: 6,
+      computer: 0,
     })
   })
 
@@ -150,16 +132,9 @@ describe("count score for 2 consecutive rounds", () => {
     await store.dispatch(playShape("Paper"))
     shifumiGateway.shape = "Paper"
     await store.dispatch(playShape("Rock"))
-    expect(store.getState()).toEqual<AppState>({
-      ...initialState,
-      playShape: {
-        playerShape: "Rock",
-        computerShape: "Paper",
-      },
-      countScore: {
-        player: 0,
-        computer: 6,
-      },
+    expect(store.getState().countScore).toEqual<AppState["countScore"]>({
+      player: 0,
+      computer: 6,
     })
   })
   test("Player gets 2 consecutive draws", async () => {
@@ -167,16 +142,9 @@ describe("count score for 2 consecutive rounds", () => {
     await store.dispatch(playShape("Scissors"))
     shifumiGateway.shape = "Paper"
     await store.dispatch(playShape("Paper"))
-    expect(store.getState()).toEqual<AppState>({
-      ...initialState,
-      playShape: {
-        playerShape: "Paper",
-        computerShape: "Paper",
-      },
-      countScore: {
-        player: 2,
-        computer: 2,
-      },
+    expect(store.getState().countScore).toEqual<AppState["countScore"]>({
+      player: 2,
+      computer: 2,
     })
   })
   test("Player loses then wins", async () => {
@@ -184,16 +152,9 @@ describe("count score for 2 consecutive rounds", () => {
     await store.dispatch(playShape("Rock"))
     shifumiGateway.shape = "Scissors"
     await store.dispatch(playShape("Rock"))
-    expect(store.getState()).toEqual<AppState>({
-      ...initialState,
-      playShape: {
-        playerShape: "Rock",
-        computerShape: "Scissors",
-      },
-      countScore: {
-        player: 3,
-        computer: 3,
-      },
+    expect(store.getState().countScore).toEqual<AppState["countScore"]>({
+      player: 3,
+      computer: 3,
     })
   })
 })
