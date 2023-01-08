@@ -1,6 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit"
 import type { Shape } from "src/core/models/shape"
-import { playersShapesFormed } from "src/core/usecases/playShape/actions"
+import { playShape } from "src/core/usecases/playShape"
 
 export type SaveRoundToHistoryState = {
   playerShape: Shape
@@ -9,7 +9,7 @@ export type SaveRoundToHistoryState = {
 const initial: SaveRoundToHistoryState = []
 
 export const saveRoundToHistory = createReducer(initial, (builder) => {
-  builder.addCase(playersShapesFormed, (state, action) => {
+  builder.addCase(playShape.fulfilled, (state, action) => {
     const {
       payload: { playerShape, computerShape },
     } = action

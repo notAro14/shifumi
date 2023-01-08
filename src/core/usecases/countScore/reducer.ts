@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit"
-import { playersShapesFormed } from "src/core/usecases/playShape/actions"
+import { playShape } from "src/core/usecases/playShape"
 import type { Shape } from "src/core/models/shape"
 
 export interface CountScoreState {
@@ -12,7 +12,7 @@ const initial: CountScoreState = {
 }
 
 export const countScore = createReducer(initial, (builder) => {
-  builder.addCase(playersShapesFormed, (state, action) => {
+  builder.addCase(playShape.fulfilled, (state, action) => {
     const {
       payload: { playerShape, computerShape },
     } = action

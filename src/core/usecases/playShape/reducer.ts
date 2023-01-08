@@ -1,6 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit"
 import type { Shape } from "src/core/models/shape"
-import { playersShapesFormed } from "./actions"
+import { playShape as _playShape } from "src/core/usecases/playShape"
 
 export interface PlayShapeState {
   playerShape: Shape | null
@@ -12,7 +12,7 @@ const initial: PlayShapeState = {
 }
 
 export const playShape = createReducer(initial, (builder) => {
-  builder.addCase(playersShapesFormed, (state, action) => {
+  builder.addCase(_playShape.fulfilled, (state, action) => {
     state.computerShape = action.payload.computerShape
     state.playerShape = action.payload.playerShape
   })
