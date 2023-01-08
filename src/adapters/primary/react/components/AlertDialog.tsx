@@ -15,31 +15,44 @@ export const AlertDialog: FC<{
   isOpen: boolean
   onOpenChange: (open: boolean) => void
   onConfirm: () => void
-  onCancel: () => void
-  title: string
-  description: string
-}> = ({ isOpen, onOpenChange, title, description, onCancel, onConfirm }) => {
+  onCancel?: () => void
+  confirmBtnLabel: string
+  cancelBtnLabel?: string
+  title?: string
+  description?: string
+}> = ({
+  isOpen,
+  onOpenChange,
+  title,
+  description,
+  onCancel,
+  onConfirm,
+  confirmBtnLabel,
+  cancelBtnLabel,
+}) => {
   return (
     <Root open={isOpen} onOpenChange={onOpenChange}>
       <Portal>
         <Overlay className={styles.overlay}>
           <Content className={styles.content}>
             {title && (
-              <Title asChild className={styles.title}>
+              <Title asChild>
                 <h2>{title}</h2>
               </Title>
             )}
             {description && (
-              <Description asChild className={styles.description}>
+              <Description asChild>
                 <p>{description}</p>
               </Description>
             )}
             <Action asChild>
-              <button onClick={onConfirm}>Supprimer</button>
+              <button onClick={onConfirm}>{confirmBtnLabel}</button>
             </Action>
-            <Cancel asChild>
-              <button onClick={onCancel}>Annuler</button>
-            </Cancel>
+            {onCancel && (
+              <Cancel asChild>
+                <button onClick={onCancel}>{cancelBtnLabel}</button>
+              </Cancel>
+            )}
           </Content>
         </Overlay>
       </Portal>

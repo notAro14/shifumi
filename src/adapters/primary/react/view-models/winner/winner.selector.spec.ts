@@ -11,6 +11,7 @@ describe("winner selector", () => {
     const state = store.getState()
     expect(winnerSelector(state)).toEqual<WinnerVM>({
       winner: null,
+      congratsWord: null,
     })
   })
   test("player wins after 3 rounds", async () => {
@@ -23,6 +24,7 @@ describe("winner selector", () => {
     const state = store.getState()
     expect(winnerSelector(state)).toEqual<WinnerVM>({
       winner: "Player",
+      congratsWord: "You won !",
     })
   })
   test("player loses after 3 rounds", async () => {
@@ -35,6 +37,7 @@ describe("winner selector", () => {
     const state = store.getState()
     expect(winnerSelector(state)).toEqual<WinnerVM>({
       winner: "Computer",
+      congratsWord: "You lost",
     })
   })
   test("draw after 3 rounds", async () => {
@@ -47,6 +50,7 @@ describe("winner selector", () => {
     const state = store.getState()
     expect(winnerSelector(state)).toEqual<WinnerVM>({
       winner: "Draw",
+      congratsWord: "It's a tie",
     })
   })
 })

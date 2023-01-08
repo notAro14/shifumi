@@ -1,5 +1,5 @@
 import { useAppSelector } from "../hooks/redux"
-import { scoreSelector } from "src/adapters/primary/react/view-models/score.selector"
+import { scoreSelector } from "src/adapters/primary/react/view-models/score/score.selector"
 import styles from "./Score.module.scss"
 
 export default function Score() {

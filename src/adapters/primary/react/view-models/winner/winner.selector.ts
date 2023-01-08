@@ -8,11 +8,15 @@ export const winnerSelector = (state: AppState): WinnerVM => {
   } = state
   const rounds = gameHistory.length
   if (rounds >= MAX_ROUNDS) {
-    if (playerScore === computerScore) return { winner: "Draw" }
-    if (playerScore > computerScore) return { winner: "Player" }
-    if (playerScore < computerScore) return { winner: "Computer" }
+    if (playerScore === computerScore)
+      return { winner: "Draw", congratsWord: "It's a tie" }
+    if (playerScore > computerScore)
+      return { winner: "Player", congratsWord: "You won !" }
+    if (playerScore < computerScore)
+      return { winner: "Computer", congratsWord: "You lost" }
   }
   return {
     winner: null,
+    congratsWord: null,
   }
 }
