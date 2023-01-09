@@ -1,6 +1,6 @@
 import type { ReactNode } from "react"
 
-import styles from "./Layout.module.scss"
+import * as styles from "./Layout.css"
 
 export default function Layout(props: { children: ReactNode }) {
   const { children } = props

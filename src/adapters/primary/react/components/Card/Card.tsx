@@ -1,5 +1,5 @@
 import { ReactNode } from "react"
-import styles from "./Card.module.scss"
+import * as styles from "./Card.css"
 
 export default function Card(props: { children: ReactNode }) {
   return <div className={styles.card}>{props.children}</div>

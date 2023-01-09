@@ -50,6 +50,14 @@ const commonStyles = {
   fontFamily: {
     sans: "var(--font-sans)",
   },
+  shadows: {
+    xs: "var(--shadow-1)",
+    sm: "var(--shadow-2)",
+    md: "var(--shadow-3)",
+    lg: "var(--shadow-4)",
+    xl: "var(--shadow-5)",
+    "2xl": "var(--shadow-6)",
+  },
 }
 
 export const [lightClass, vars] = createTheme(
@@ -61,6 +69,8 @@ export const [lightClass, vars] = createTheme(
       "surface-2": "var(--gray-1)",
       "surface-3": "var(--gray-2)",
       "surface-4": "var(--gray-3)",
+      "text-1": "var(--gray-8)",
+      "text-2": "var(--gray-7)",
     },
   },
   DEBUG_ID
@@ -70,11 +80,13 @@ export const darkClass = createTheme(
   {
     ...commonStyles,
     colors: {
-      "surface-1": "var(--gray-12)",
-      "surface-2": "var(--gray-11)",
-      "surface-3": "var(--gray-10)",
-      "surface-4": "var(--gray-9)",
-      overlay: "hsl(var(--gray-1-hsl) / 50%)",
+      overlay: "hsl(var(--gray-12-hsl) / 50%)",
+      "surface-1": "var(--gray-8)",
+      "surface-2": "var(--gray-7)",
+      "surface-3": "var(--gray-6)",
+      "surface-4": "var(--gray-5)",
+      "text-1": "var(--gray-3)",
+      "text-2": "var(--gray-4)",
     },
   },
   DEBUG_ID
