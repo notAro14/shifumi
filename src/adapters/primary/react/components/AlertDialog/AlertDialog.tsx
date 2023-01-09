@@ -46,11 +46,15 @@ export const AlertDialog: FC<{
               </Description>
             )}
             <Action asChild>
-              <button onClick={onConfirm}>{confirmBtnLabel}</button>
+              <button className={styles.button} onClick={onConfirm}>
+                {confirmBtnLabel}
+              </button>
             </Action>
             {onCancel && (
               <Cancel asChild>
-                <button onClick={onCancel}>{cancelBtnLabel}</button>
+                <button className={styles.button} onClick={onCancel}>
+                  {cancelBtnLabel}
+                </button>
               </Cancel>
             )}
           </Content>

@@ -71,6 +71,9 @@ export const [lightClass, vars] = createTheme(
       "surface-4": "var(--gray-3)",
       "text-1": "var(--gray-8)",
       "text-2": "var(--gray-7)",
+      "text-fg-white": "var(--gray-0)",
+      brand: "var(--blue-6)",
+      "brand-hovered": "var(--blue-7)",
     },
   },
   DEBUG_ID
@@ -87,6 +90,9 @@ export const darkClass = createTheme(
       "surface-4": "var(--gray-5)",
       "text-1": "var(--gray-3)",
       "text-2": "var(--gray-4)",
+      "text-fg-white": "var(--gray-12)",
+      brand: "var(--blue-4)",
+      "brand-hovered": "var(--blue-5)",
     },
   },
   DEBUG_ID

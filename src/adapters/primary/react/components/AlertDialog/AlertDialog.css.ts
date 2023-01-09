@@ -39,7 +39,7 @@ export const content = style({
   animationTimingFunction: "ease-in-out",
   animationFillMode: "forwards",
   backgroundColor: vars.colors["surface-2"],
-  borderRadius: vars.radii.sm,
+  borderRadius: vars.radii.md,
   color: vars.colors["text-1"],
   display: "flex",
   justifyContent: "center",
@@ -53,7 +53,22 @@ export const content = style({
   width: "80%",
   "@media": {
     "screen and (min-width: 768px)": {
-      width: "30%",
+      width: 250,
     },
+  },
+})
+
+export const button = style({
+  backgroundColor: vars.colors.brand,
+  border: "none",
+  padding: `${vars.space.sm} ${vars.space.lg}`,
+  borderRadius: vars.radii.sm,
+  cursor: "pointer",
+  boxShadow: vars.shadows.xs,
+  textTransform: "uppercase",
+  color: vars.colors["text-fg-white"],
+  ":hover": {
+    backgroundColor: vars.colors["brand-hovered"],
+    boxShadow: vars.shadows.sm,
   },
 })
