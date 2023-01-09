@@ -9,7 +9,7 @@ import {
   Action,
   Content,
 } from "@radix-ui/react-alert-dialog"
-import styles from "./AlertDialog.module.scss"
+import * as styles from "./AlertDialog.css"
 
 export const AlertDialog: FC<{
   isOpen: boolean

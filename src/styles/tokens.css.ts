@@ -34,12 +34,48 @@ const commonStyles = {
     "5xl": "var(--font-size-7)",
     "6xl": "var(--font-size-8)",
   },
+  radii: {
+    xs: "var(--radius-1)",
+    sm: "var(--radius-2)",
+    md: "var(--radius-3)",
+    lg: "var(--radius-4)",
+    xl: "var(--radius-5)",
+    round: "var(--radius-round)",
+    "xs-blob": "var(--radius-blob-1)",
+    "sm-blob": "var(--radius-blob-2)",
+    "md-blob": "var(--radius-blob-3)",
+    "lg-blob": "var(--radius-blob-4)",
+    "xl-blob": "var(--radius-blob-5)",
+  },
+  fontFamily: {
+    sans: "var(--font-sans)",
+  },
 }
 
 export const [lightClass, vars] = createTheme(
   {
     ...commonStyles,
+    colors: {
+      overlay: "hsl(var(--gray-12-hsl) / 50%)",
+      "surface-1": "var(--gray-0)",
+      "surface-2": "var(--gray-1)",
+      "surface-3": "var(--gray-2)",
+      "surface-4": "var(--gray-3)",
+    },
   },
   DEBUG_ID
 )
-export const darkClass = createTheme(vars, { ...commonStyles }, DEBUG_ID)
+export const darkClass = createTheme(
+  vars,
+  {
+    ...commonStyles,
+    colors: {
+      "surface-1": "var(--gray-12)",
+      "surface-2": "var(--gray-11)",
+      "surface-3": "var(--gray-10)",
+      "surface-4": "var(--gray-9)",
+      overlay: "hsl(var(--gray-1-hsl) / 50%)",
+    },
+  },
+  DEBUG_ID
+)
